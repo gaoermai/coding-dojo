@@ -29,7 +29,7 @@ $ docker tag gaoermai/ruby-devel:0.0.2 dojo/ruby-devel:latest
 #######################
 $ mkdir ~/dojo ; cd ~/dojo
 $ git clone https://github.com/gaoermai/coding-dojo.git
-$ ./coding-dojo/bin/start_devel
+$ ./coding-dojo/bin/for_mac/start_devel
 ```
 
 至此，整个环境的部署已经完成，并且已经进入容器。
