@@ -1,0 +1,21 @@
+#!/bin/bash
+
+IMAGE_NAME='dojo/ruby-devel:latest'
+CONTAINER_NAME='dojo-ruby'
+
+#######################################################
+
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
+
+if [ -z "$DOCKER_HOST" ]; then
+    echo 'Connect to docker ...'
+    eval "$(docker-machine env default)"
+fi
+
+docker stop ${CONTAINER_NAME}
+docker rm -f ${CONTAINER_NAME}
+
+docker run -tid -p 3000:3000 -v ${DIR}:/data --name ${CONTAINER_NAME} ${IMAGE_NAME}
+docker exec -i ${CONTAINER_NAME} /bin/bash -c "cd demo_app/ && bundle install && rails s -d -b 0.0.0.0"
+
+docker exec -it ${CONTAINER_NAME} /bin/bash
