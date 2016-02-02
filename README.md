@@ -30,13 +30,20 @@ $ docker tag gaoermai/ruby-devel:0.0.2 dojo/ruby-devel:latest
 $ mkdir ~/dojo ; cd ~/dojo
 $ git clone https://github.com/gaoermai/coding-dojo.git
 $ ./coding-dojo/bin/start_devel
+```
 
+至此，整个环境的部署已经完成，并且已经进入容器。
 
-#######################
-# 在容器中执行
-#######################
+我们做一下简单的测试，看看是否一切正常。在容器中执行：
+
+```
 # cd demo_app/
 # rake
+```
+
+如果你看到下面输出，说明RSpec和Cucumber的测试能够正常运行了：
+
+```
 /usr/local/bin/ruby -I/usr/local/bundle/gems/rspec-core-3.3.2/lib:/usr/local/bundle/gems/rspec-support-3.3.0/lib /usr/local/bundle/gems/rspec-core-3.3.2/exe/rspec --pattern spec/\*\*\{,/\*/\*\*\}/\*_spec.rb
 No examples found.
 
@@ -52,7 +59,7 @@ Using the default profile...
 0m0.001s
 ```
 
-如果一切顺利的话，打开浏览器输入```http://192.168.99.100:3000/```，你会看到以下界面：
+打开浏览器输入```http://192.168.99.100:3000/```，你会看到以下界面：
 
 ![Rails on Ruby默认首页](screenshot/rails-default-index.png)
 
