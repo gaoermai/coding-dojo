@@ -45,19 +45,35 @@ $ ./coding-dojo/bin/for_mac/start_devel
 如果你看到下面输出，说明RSpec和Cucumber的测试能够正常运行了：
 
 ```
+# rake
 /usr/local/bin/ruby -I/usr/local/bundle/gems/rspec-core-3.3.2/lib:/usr/local/bundle/gems/rspec-support-3.3.0/lib /usr/local/bundle/gems/rspec-core-3.3.2/exe/rspec --pattern spec/\*\*\{,/\*/\*\*\}/\*_spec.rb
-No examples found.
+Running via Spring preloader in process 19571
+...*
+
+Pending: (Failures listed here are expected and do not affect your suite's status)
+
+  1) home/index.html.erb add some examples to (or delete) /data/demo_app/spec/views/home/index.html.erb_spec.rb
+     # Not yet implemented
+     # ./spec/views/home/index.html.erb_spec.rb:4
 
 
-Finished in 0.00055 seconds (files took 0.61756 seconds to load)
-0 examples, 0 failures
+Finished in 0.09185 seconds (files took 6.04 seconds to load)
+4 examples, 0 failures, 1 pending
 
 /usr/local/bin/ruby -S bundle exec cucumber  --profile default
-Running via Spring preloader in process 19402
+Running via Spring preloader in process 19580
 Using the default profile...
-0 scenarios
-0 steps
-0m0.001s
+# language: zh-CN
+# encoding: UTF-8
+功能: 展示首页
+
+  场景: 首页显示Home#index # features/homepage.feature:6
+    当打开首页            # features/step_definitions/homepage.rb:1
+    那么看到'Home#index' # features/step_definitions/homepage.rb:5
+
+1 scenario (1 passed)
+2 steps (2 passed)
+0m0.410s
 ```
 
 打开浏览器输入```http://192.168.99.100:3000/```，你会看到以下界面：
