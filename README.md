@@ -8,27 +8,28 @@
 
 然后执行下面命令创建开发用的镜像（以Mac OS X为例）：
 
+第一步：启动Docker
+
 ```
-#######################
-# 启动Docker
-#######################
 $ docker-machine create --driver virtualbox default
 $ docker-machine env default
 $ eval "$(docker-machine env default)"
+```
 
+第二步：获取开发使用的镜像
 
-#######################
-# 获取开发使用的镜像
-#######################
+```
 $ docker pull gaoermai/ruby-devel:0.0.2
 $ docker tag gaoermai/ruby-devel:0.0.2 dojo/ruby-devel:latest
+```
 
+第三步：启动容器
 
-#######################
-# 启动容器
-#######################
+在进行后续步骤之前，请先fork [coding-dojo](https://github.com/gaoermai/coding-dojo.git)，以便后续实践过程中提交代码到自己的代码仓库。
+
+```
 $ mkdir ~/dojo ; cd ~/dojo
-$ git clone https://github.com/gaoermai/coding-dojo.git
+$ git clone https://github.com/<your_name>/coding-dojo.git
 $ ./coding-dojo/bin/for_mac/start_devel
 ```
 
