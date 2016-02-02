@@ -9,21 +9,47 @@
 然后执行下面命令创建开发用的镜像（以Mac OS X为例）：
 
 ```
+#######################
 # 启动Docker
+#######################
 $ docker-machine create --driver virtualbox default
 $ docker-machine env default
 $ eval "$(docker-machine env default)"
 
 
+#######################
 # 获取开发使用的镜像
+#######################
 $ docker pull gaoermai/ruby-devel:0.0.2
 $ docker tag gaoermai/ruby-devel:0.0.2 dojo/ruby-devel:latest
 
 
+#######################
 # 启动容器
+#######################
 $ mkdir ~/dojo ; cd ~/dojo
 $ git clone https://github.com/gaoermai/coding-dojo.git
 $ ./coding-dojo/bin/start_devel
+
+
+#######################
+# 在容器中执行
+#######################
+# cd demo_app/
+# rake
+/usr/local/bin/ruby -I/usr/local/bundle/gems/rspec-core-3.3.2/lib:/usr/local/bundle/gems/rspec-support-3.3.0/lib /usr/local/bundle/gems/rspec-core-3.3.2/exe/rspec --pattern spec/\*\*\{,/\*/\*\*\}/\*_spec.rb
+No examples found.
+
+
+Finished in 0.00055 seconds (files took 0.61756 seconds to load)
+0 examples, 0 failures
+
+/usr/local/bin/ruby -S bundle exec cucumber  --profile default
+Running via Spring preloader in process 19402
+Using the default profile...
+0 scenarios
+0 steps
+0m0.001s
 ```
 
 如果一切顺利的话，打开浏览器输入```http://192.168.99.100:3000/```，你会看到以下界面：
