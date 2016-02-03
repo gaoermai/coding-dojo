@@ -4,8 +4,6 @@ CONTAINER_NAME='dojo-ruby'
 
 #######################################################
 
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
-
 if [ -z "$DOCKER_HOST" ]; then
     echo 'Connect to docker ...'
     eval "$(docker-machine env default)"
